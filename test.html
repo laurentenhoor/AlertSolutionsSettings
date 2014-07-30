@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	
+	<script src='js/jquery-1.11.1.min.js'></script>
+	
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+	
+	<link href="css/bootstrap-timepicker.css" rel="stylesheet">
+	<script src="js/bootstrap-timepicker.js"></script>
+	
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<script src="js/jquery-ui.min.js"></script>
+	
+	
+	<script src="js/ejs.js"></script>
+	<script src="js/view.js"></script>
+	
+	<link href="css/test.css" rel="stylesheet">
+	<script src="js/test.js"></script>
+	
+	<title>Modem Logger Settings</title>
+	
+  </head>
+  
+  <body>
+
+<div class="page-content inset col-xs-12">
+
+<div class="panel panel-default">
+  <div class="panel-heading">Keep Alive Messages</div>
+  
+  <div class="panel-body">
+
+	<form class="form-horizontal" role="form">
+		
+	  <div class="form-group">
+	    <label for="main-keepalivetime" class="col-sm-3 control-label">Send Time</label>
+	    <div class="col-sm-7">
+	      <div class="input-group bootstrap-timepicker">
+	        <input type="text" class="form-control input-small" id="main-keepalivetime">
+	        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+           </div>
+	      <span class="help-block">Time for sending a keepalive message.</span>
+	    </div>
+	  </div>
+
+	    <div class="form-group">
+
+	         <label for="main-keepaliveinterval" class="col-sm-3 control-label">Interval</label>
+	        <div class="col-sm-9">
+	        	 
+	            <div class="form-group row">
+	                <div class="col-xs-6 col-sm-3">
+	                    <input type="number" min="0" max="100" step="1" class="form-control" id="main-keepaliveinterval" placeholder="0">
+	                </div>
+	                <div for="main-keepaliveinterval" class="col-xs-1 control-label">Days</div>
+	                
+	            </div>
+	            <div class="form-group row">
+	                <div class="col-sm-9">
+	                    <div id="main-keepaliveinterval-slider"></div>
+	                	<span class="help-block">Message interval in days.</span>
+	                </div>
+	               
+	            </div>
+	        </div>
+	        
+	    </div>
+
+
+	  </form>
+
+</div>
+
+
+</div>
+
+</div>	
+	
+	
+</body>

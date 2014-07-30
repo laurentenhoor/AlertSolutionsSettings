@@ -1,0 +1,11 @@
+<% for(var i=1; i <= 10; i++) {%>
+	
+	<div class="form-group">
+		<label for="sms-<%= i %>" class="col-sm-3 control-label">SMS Number <%= i %></label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control sms" data-nr="<%= i %>" id="sms-<%= i %>" value="<%= numbers[i-1] %>" placeholder="Enter Phone Number">
+			<%= i == 1  ? '<span class="help-block">SMS number including country code.<br>E.g. 44123456789</span>' : '' %>
+		</div>
+	</div>
+	
+<% } %>

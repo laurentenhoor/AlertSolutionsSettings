@@ -1,0 +1,10 @@
+{
+  "name": "nw-demo",
+  "main": "index.html",
+  "window" : {
+	"show" : false,
+	"toolbar" : true,
+	"frame" : true,
+	 "icon" : "img/swirl.png"
+  }
+}

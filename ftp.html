@@ -1,0 +1,207 @@
+<div class="content-header">
+    <h1>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="fa fa-bars"></i></a>
+        FTP Client Settings
+    </h1>
+</div>
+
+<div class="page-content inset col-md-8">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Remote Info
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="ftp-server" class="col-sm-3 control-label">Server URL</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="ftp-server" placeholder="Enter Server URL">
+						<span class="help-block">Server address (URL) of the FTP data server.</span>
+						
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="ftp-path" class="col-sm-3 control-label">Path</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="ftp-path" placeholder="Enter Path">
+						<span class="help-block">Directory on the FTP server.</span>
+						<span class="help-block red">Note: using this option may increase length of ftp session.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="ftp-login" class="col-sm-3 control-label">Username</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="ftp-login" placeholder="Enter Username">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="ftp-password" class="col-sm-3 control-label">Password</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="ftp-password" placeholder="Enter Password">
+						<span class="help-block">FTP login username and password.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="ftp-passive" class="col-sm-3 control-label">Connection</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="ftp-passive" type="checkbox">
+								<div id="ftp-passive-label">
+									Active
+								</div> </label>
+							<span class="help-block">Passive or active connection type to FTP. (Default: Passive)</span>
+						</div>
+					</div>
+				</div>
+	
+
+			</form>
+		</div>
+	</div><!-- Remote Info -->
+
+
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Connection Time
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="ftp-time" class="col-sm-3 control-label">Timing</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="ftp-time">
+							<option value="abs">Custom Timing</option>
+							<option value="hour">Hourly</option>
+							<option value="work">Work Hourly (7am-4pm)</option>
+							<option value="min">Minutely</option>
+						</select>		
+					</div>
+				</div>	
+				
+				
+				<div class="form-group abs-time" style="display:none">
+					<label for="ftp-abs-time" class="col-sm-3 control-label">Send Time</label>
+					<div class="col-sm-7">
+						<div class="input-group bootstrap-timepicker">
+							<input type="text" class="form-control input-small" id="ftp-abs-time">
+							<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+						</div>
+						<span class="help-block">Time for connection to FTP server.</span>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="ftp-interval" class="col-sm-3 control-label">Interval</label>
+					<div class="col-md-9">
+						<div class="form-group row">
+							<div class="col-md-3">
+								<input type="number" min="0" max="600" step="1" class="form-control" id="ftp-interval" placeholder="0">
+							</div>
+							<div id="ftp-interval-unit" class="col-md-1 control-label">
+								Seconds
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-9">
+								<div id="ftp-interval-slider"></div>
+								<span class="help-block">Time that GSM stays actively scanning for messages after FTP transmission.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- Connection Time -->
+	
+<div class="panel panel-default">
+		<div class="panel-heading">
+			File Settings
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="ftp-nobackup" class="col-sm-3 control-label">Create Backup</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="ftp-nobackup" type="checkbox">
+								<div id="ftp-nobackup-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable the creation of backup files.</span>
+						</div>
+					</div>
+				</div>
+
+				
+				<div class="form-group">
+					<label for="ftp-getfirmware" class="col-sm-3 control-label">Update Firmware</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="ftp-getfirmware" type="checkbox">
+								<div id="ftp-getfirmware-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable getting new firmware from FTP server.</span>
+						</div>
+					</div>
+				</div>	
+
+
+				<div class="form-group">
+					<label for="ftp-getsettings" class="col-sm-3 control-label">Download Settings</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="ftp-getsettings" type="checkbox">
+								<div id="ftp-getsettings-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable downloading settings from FTP server.</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="ftp-sendsettings" class="col-sm-3 control-label">Upload Settings</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="ftp-sendsettings" type="checkbox">
+								<div id="ftp-sendsettings-label">
+									Active
+								</div> </label>
+								<span class="help-block">Enable or disable uploading settings to FTP server.</span>
+								<span class="help-block">Filename: <span class="main-name-ref"></span>-set-yyyymmddhhmmss.ini
+								Timestamp in filename is the file change date on the SD.
+								File transfer only if not present on FTP server. This way only a changed settings.ini file will be placed on the FTP server upon a next transmission.
+								</span>
+
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- File Settings -->	
+
+</div>

@@ -1,0 +1,167 @@
+<div class="content-header">
+	<h1><a id="menu-toggle" href="#" class="btn btn-default"><i class="fa fa-bars"></i></a> GSM Modem Settings </h1>
+</div>
+
+<div class="page-content inset col-md-8">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			GSM Network
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="gsm-smsrecv" class="col-sm-3 control-label">Reception</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="gsm-smsrecv" type="checkbox">
+								<div id="gsm-smsrecv-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable reception of SMS messages.</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gsm-debug" class="col-sm-3 control-label">Debugging</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="gsm-debug" type="checkbox">
+								<div id="gsm-debug-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable debug messages of GSM module.</span>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- General GSM -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Advanced
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="gsm-cmd" class="col-sm-3 control-label">AT Command</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="gsm-cmd" placeholder="e.g. AT+CPIN1234">
+						<span class="help-block">Program an extra GSM command (AT protocol).</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gsm-gsmontime" class="col-sm-3 control-label">Scan Time</label>
+					<div class="col-md-9">
+						<div class="form-group row">
+							<div class="col-md-3">
+								<input type="number" min="0" max="600" step="1" class="form-control" id="gsm-gsmontime" placeholder="0">
+							</div>
+							<div for="gsm-gsmontime" class="col-md-1 control-label">
+								Seconds
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-9">
+								<div id="gsm-gsmontime-slider"></div>
+								<span class="help-block">Time that GSM stays actively scanning for messages after ftp transmission.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- Advanced GSM -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			GPRS Access
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="gsm-apn" class="col-sm-3 control-label">APN Name</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="gsm-apn" placeholder="Enter APN Name">
+						<span class="help-block">Mobile network operator’s Access Point Name.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gsm-login" class="col-sm-3 control-label">Username</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="gsm-login" placeholder="Enter Username">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gsm-password" class="col-sm-3 control-label">Password</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="gsm-password" placeholder="Enter Password">
+						<span class="help-block">Optional GPRS login username and/or password.</span>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- GPRS -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Time Server
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="gsm-daytimeserver" class="col-sm-3 control-label">Server URL</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="gsm-daytimeserver" placeholder="Enter Server URL">
+						<span class="help-block">URL address of a daytime server for time synchronization.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gsm-utc" class="col-sm-3 control-label">UTC Time Offset</label>
+					<div class="col-md-9">
+						<div class="form-group row">
+							<div class="col-md-3">
+								<input type="number" min="-12" max="14" step="1" class="form-control" id="gsm-utc" placeholder="0">
+							</div>
+							<div for="gsm-utc" class="col-md-1 control-label">
+								Hours
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-9">
+								<div id="gsm-utc-slider"></div>
+								<span class="help-block">Optional correction of unit time w.r.t. UTC.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div><!-- Time -->
+
+</div>
+

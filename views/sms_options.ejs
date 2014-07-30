@@ -1,0 +1,7 @@
+<% for(var i=1; i <= sms.length; i++) {%>
+
+	<%if (sms[i-1] !== '') { %>
+		<option value="<%= i %>"><%= sms[i-1] %></option>
+	<% } %>
+
+<% } %>

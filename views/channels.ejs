@@ -1,0 +1,200 @@
+<!-- Nav tabs -->
+<ul id="channels-tab" class="nav nav-tabs" role="tablist">
+	<% for(var i=0; i < channels.length; i++) {%>
+  		<li class="<%= i == 0 ? 'active' : '' %>"><a href="#channel-<%= channels[i] %>" role="tab" data-toggle="tab">Channel <%= channels[i] %></a></li>
+	<% } %>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+	<% for(var i=0; i < channels.length; i++) {%>	
+		
+		<div class="tab-pane <%= i == 0 ? 'active' : '' %>" id="channel-<%= channels[i] %>"> 	
+		  
+		 	
+		 	<div class="page-content inset col-md-8">
+		 	
+		 	
+		 	
+		 	
+		 		<div class="panel panel-default">
+					<div class="panel-heading">
+						Channel <%= channels[i] %>
+					</div>
+			
+					<div class="panel-body">
+			
+						<form class="form-horizontal" role="form">
+			
+			
+							<div class="form-group">
+								<label for="channel-<%= channels[i] %>-name" class="col-sm-3 control-label">Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="channel-<%= channels[i] %>-name" placeholder="Enter Channel Name">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-tagname" class="col-sm-3 control-label">Tag</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="channel-<%= channels[i] %>-tagname" placeholder="Enter Channel Tag">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-enable" class="col-sm-3 control-label">Activity</label>
+								<div class="col-sm-7">
+									<div class="checkbox">
+										<label>
+											<input id="channel-<%= channels[i]%>-enable" type="checkbox">
+											<div id="channel-<%= channels[i]%>-enable-label">
+												Active
+											</div> </label>
+										<span class="help-block">Enable or disable the channel activity.</span>
+									</div>
+								</div>
+							</div>	
+							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-inputtype" class="col-sm-3 control-label">Sensor Type</label>
+								<div class="col-sm-7">
+									<select class="form-control" id="channel-<%= channels[i]%>-inputtype">
+										<option value="0">4-20 mA</option>
+										<option value="1">Pulse</option>
+										<option value="2">0-10 V</option>
+									</select>
+									<span class="help-block">Select the input type of the sensor.</span>
+								</div>
+							</div>	
+							
+																						
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-measuretime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-measuretime" class="col-md-1 control-label">
+											Miliseconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-measuretime-slider"></div>
+											<span class="help-block">Voltage excitation time of sensor (in millisec) before recording.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-measureinterval" class="col-sm-3 control-label">Sampling Interval</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-measureinterval" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-measureinterval" class="col-md-1 control-label">
+											Seconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-measureinterval-slider"></div>
+											<span class="help-block">Sampling interval in seconds if not in alarm zone.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-logtime" class="col-sm-3 control-label">Log Interval</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-logtime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-logtime" class="col-md-1 control-label">
+											Seconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-logtime-slider"></div>
+											<span class="help-block">Logging interval in seconds if not in alarm zone.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-debouncetime" class="col-sm-3 control-label">Debounce Time</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-debouncetime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-debouncetime" class="col-md-1 control-label">
+											Seconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-debouncetime-slider"></div>
+											<span class="help-block">Debounce time for pulse counter in seconds. 
+												Multiple pulses within this time frame counted as one.</span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>			
+						
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Valid Range</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-4">
+											<input id="channel-<%= channels[i]%>-validlow" type="number" min="0" max="999" step="0.001" class="form-control" placeholder="0,000" formnovalidate >
+										</div>
+										<div class="col-md-1 control-label">
+											to
+										</div>
+										<div class="col-md-4">
+											<input id="channel-<%= channels[i]%>-validhigh" type="number" min="0" max="999" step="0.001" class="form-control" placeholder="0,000" formnovalidate >
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<span class="help-block">Range for validation of data in log (GOOD/BAD).</span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>		
+						
+						
+							<div class="form-group">
+								<label for="channel-<%= channels[i] %>-units" class="col-sm-3 control-label">Unit Label</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="channel-<%= channels[i] %>-units" placeholder="Enter Unit Label">
+								</div>
+							</div>						
+					
+						
+						</form>
+					</div>
+				</div><!-- Channel[i]-->
+		 	
+		 	
+		 	
+		 	
+		 	
+		 	</div>
+		 	
+		 	
+		  
+		</div>
+
+	<% } %>
+</div>

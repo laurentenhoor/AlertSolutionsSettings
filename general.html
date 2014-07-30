@@ -1,0 +1,208 @@
+<div class="content-header">
+	<h1><a id="menu-toggle" href="#" class="btn btn-default"><i class="fa fa-bars"></i></a> General Device Settings </h1>
+</div>
+
+<div class="page-content inset col-md-8">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Device
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="main-name" class="col-sm-3 control-label">Name</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="main-name" placeholder="Enter Device Name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="main-enable" class="col-sm-3 control-label">Activity</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="main-enable" type="checkbox">
+								<div id="main-enable-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable the device activity.</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="main-excvolt" class="col-sm-3 control-label">Sensor Voltage</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="main-excvolt">
+							<option value="1">12 V</option>
+							<option value="2">15 V</option>
+							<option value="3">24 V</option>
+						</select>
+						<span class="help-block">Sensor excitation Voltage on channel 1.</span>
+					</div>
+				</div>				
+
+			</form>
+		</div>
+	</div>
+	<!-- General Device -->
+
+	<div class="panel panel-default">
+		<!-- Keep Alive Panel -->
+		<div class="panel-heading">
+			Keep Alive Messages
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="main-keepalivetime" class="col-sm-3 control-label">Send Time</label>
+					<div class="col-sm-7">
+						<div class="input-group bootstrap-timepicker">
+							<input type="text" class="form-control input-small" id="main-keepalivetime">
+							<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+						</div>
+						<span class="help-block">Time for sending a keepalive message.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="main-keepaliveinterval" class="col-sm-3 control-label">Interval</label>
+					<div class="col-md-9">
+						<div class="form-group row">
+							<div class="col-md-3">
+								<input type="number" min="1" max="255" step="1" class="form-control" id="main-keepaliveinterval" placeholder="0">
+							</div>
+							<div for="main-keepaliveinterval" class="col-md-1 control-label">
+								Days
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-9">
+								<div id="main-keepaliveinterval-slider"></div>
+								<span class="help-block">Message interval in days.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="main-keepalivesms-wrap" class="form-group">
+					<label for="main-keepalivesms" class="col-sm-3 control-label">Phone Number</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="main-keepalivesms">
+							<!-- Generate phone numbers here... -->
+						</select>
+						<span class="help-block">Phone number to which keepalive SMS is sent.</span>
+						<span class="help-block red">Add/edit numbers in the SMS section.</span>
+					</div>
+				</div>				
+
+			</form>
+		</div>
+	</div>
+	<!-- Keep Alive Panel -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Log Settings
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="main-header-1" class="col-sm-3 control-label">Header</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="main-header-1" placeholder="Enter Log Header">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="main-header-2" class="col-sm-3 control-label">Description</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="main-header-2" placeholder="Enter Log Description">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="main-events" class="col-sm-3 control-label">Events Log</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="main-events" type="checkbox">
+								<div id="main-events-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable the logging of events.</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="main-debug" class="col-sm-3 control-label">Debugging</label>
+					<div class="col-sm-7">
+						<div class="checkbox">
+							<label>
+								<input id="main-debug" type="checkbox">
+								<div id="main-debug-label">
+									Active
+								</div> </label>
+							<span class="help-block">Enable or disable debug messages on COM-port.</span>
+						</div>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+	<!-- Log Settings -->
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Button Settings
+		</div>
+
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group">
+					<label for="main-buttonstatus" class="col-sm-3 control-label">Action</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="main-buttonstatus">
+							<option value="1">Update Settings</option>
+							<option value="2">Measure, Store and FTP session</option>
+							<option value="3">Send SMS Text<span id="main-current-sms"></span></option>
+							<option value="7">All actions</option>
+						</select>
+						<span class="help-block">Action initiated by pressing the ‘attention’ button.</span>
+					</div>
+				</div>
+
+				<div id="main-buttonsms-wrap" class="form-group">
+					<label for="main-buttonsms" class="col-sm-3 control-label">Phone Number</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="main-buttonsms">
+							<!-- Generate phone numbers here... -->
+						</select>
+						<span class="help-block">Phone number for sending sms by pressing button.</span>
+						<span class="help-block red">Add/edit numbers in the SMS section.</span>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+	<!-- Button Settings -->
+
+</div>
