@@ -15,11 +15,9 @@
 		 	<div class="page-content inset col-md-8">
 		 	
 		 	
-		 	
-		 	
 		 		<div class="panel panel-default">
 					<div class="panel-heading">
-						Channel <%= channels[i] %>
+						General
 					</div>
 			
 					<div class="panel-body">
@@ -67,6 +65,104 @@
 								</div>
 							</div>	
 							
+							
+							
+						</form>
+					</div>
+				</div><!-- General-->		
+				
+				
+				
+	 		<div class="panel panel-default">
+					<div class="panel-heading">
+						Logging
+					</div>
+			
+					<div class="panel-body">						
+						<form class="form-horizontal" role="form">	
+
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-logging" class="col-sm-3 control-label">Logging</label>
+								<div class="col-sm-7">
+									<div class="checkbox">
+										<label>
+											<input id="channel-<%= channels[i]%>-logging" type="checkbox">
+											<div id="channel-<%= channels[i]%>-logging-label">
+												Active
+											</div> </label>
+										<span class="help-block">Enable or disable channel logging.</span>
+									</div>
+								</div>
+							</div>							
+						
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-precisionlog" class="col-sm-3 control-label">Precision</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-precisionlog" type="number" min="0" max="4" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-precisionlog" class="col-md-1 control-label">
+											Decimals
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-precisionlog-slider"></div>
+											<span class="help-block">Number of decimal points when storing measurement values.</span>
+										</div>
+									</div>
+								</div>
+							</div>	
+
+
+						
+							<div class="form-group">
+								<label for="channel-<%= channels[i] %>-units" class="col-sm-3 control-label">Unit Label</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="channel-<%= channels[i] %>-units" placeholder="Enter Unit Label (e.g. mBar)">
+								</div>
+							</div>			
+						
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Valid Range</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-4">
+											<input id="channel-<%= channels[i]%>-validlow" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+										</div>
+										<div class="col-md-1 control-label">
+											to
+										</div>
+										<div class="col-md-4">
+											<input id="channel-<%= channels[i]%>-validhigh" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<span class="help-block">Range for data validation in log (GOOD/BAD).</span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>		
+
+						
+						</form>
+					</div>
+				</div><!-- Logging-->
+
+
+									
+							
+	 		<div class="panel panel-default">
+					<div class="panel-heading">
+						Timing
+					</div>
+			
+					<div class="panel-body">
+			
+						<form class="form-horizontal" role="form">							
 																						
 							<div class="form-group">
 								<label for="channel-<%= channels[i]%>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
@@ -150,79 +246,122 @@
 								</div>
 							</div>			
 						
+						</form>
+					</div>
+				</div><!-- Timing -->							
+							
+							
+							
+		 	
+		 	
+		 	
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Calculations
+					</div>
+			
+					<div class="panel-body">
+			
+						<form class="form-horizontal" role="form">		 	
+		 	
+		 	
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Valid Range</label>
+								<label class="col-sm-3 control-label">Calibration Constants</label>
 								<div class="col-md-9">
 									<div class="form-group row">
-										<div class="col-md-4">
-											<input id="channel-<%= channels[i]%>-validlow" type="number" min="0" max="999" step="0.001" class="form-control" placeholder="0,000">
+										<div class="col-md-3">
+											A
 										</div>
-										<div class="col-md-1 control-label">
-											to
+										<div class="col-md-3">
+											B
 										</div>
-										<div class="col-md-4">
-											<input id="channel-<%= channels[i]%>-validhigh" type="number" min="0" max="999" step="0.001" class="form-control" placeholder="0,000">
+										<div class="col-md-3">
+											C
 										</div>
+									</div>
+									
+									
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-piezocalc-a" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+										</div>
+			
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-piezocalc-b" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+										</div>
+
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-piezocalc-c" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+										</div>
+
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<span class="help-block">Range for validation of data in log (GOOD/BAD).</span>
+											<span class="help-block">Declare the A-B-C constants for a second order polynomial calibration for piëzometers.</span>
 											</span>
 										</div>
 									</div>
 								</div>
-							</div>		
-						
-						
+							</div>				
+							
+							
+							
 							<div class="form-group">
-								<label for="channel-<%= channels[i] %>-units" class="col-sm-3 control-label">Unit Label</label>
+								<label for="channel-<%= channels[i] %>-calc" class="col-sm-3 control-label">Calculation</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="channel-<%= channels[i] %>-units" placeholder="Enter Unit Label">
-								</div>
-							</div>						
-					
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-logging" class="col-sm-3 control-label">Logging</label>
-								<div class="col-sm-7">
-									<div class="checkbox">
-										<label>
-											<input id="channel-<%= channels[i]%>-logging" type="checkbox">
-											<div id="channel-<%= channels[i]%>-logging-label">
-												Active
-											</div> </label>
-										<span class="help-block">Enable or disable channel logging.</span>
-									</div>
+									<input type="text" class="form-control" id="channel-<%= channels[i] %>-calc" placeholder="Enter Calculation String">
+									<span class="help-block"> 
+										Calculation string performed on sensor value in order of declaration.
+				Operations are declared seprated by comma’s (e.g. *8,-0.1,^1)<br/>
++	Add	  <br>
+-	Subtract<br>	   
+*	Multiply<br>	   
+/	Divide	  <br> 
+^	Power	   <br>
+=	Set equal to	<br>   
+b	Barometer value	   <br>
+c&lt;n&gt;	Value of channel &lt;n&gt;<br>	   
+sin, cos, tan	Sine, cosine, tangent. <br>
+asin,acos,atan	Reverse sine, cosine, tangent.<br>	   
+log	Natural logarithm (base e)	   <br>
+log10	Standard logarithm (base 10)	   <br>
+sqrt	Square root	   <br>
+pcalc	2nd order polynomial (abc-equation)	 <br>
+</span>
+									</span>
 								</div>
 							</div>							
-						
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-precisionlog" class="col-sm-3 control-label">Precision</label>
-								<div class="col-md-9">
-									<div class="form-group row">
-										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-precisionlog" type="number" min="0" max="4" step="1" class="form-control" placeholder="0">
-										</div>
-										<div for="channel-<%= channels[i]%>-precisionlog" class="col-md-1 control-label">
-											Decimals
-										</div>
-									</div>
-									<div class="form-group row">
-										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-precisionlog-slider"></div>
-											<span class="help-block">Number of decimal points when storing measurement values.</span>
-										</div>
-									</div>
-								</div>
-							</div>						
-						
-						
+							 	
+		 	
+		 	
 						</form>
 					</div>
-				</div><!-- Channel[i]-->
-		 	
-		 	
-		 	
-		 	
+				</div><!-- Calculations -->							
+							
+							
+							
+		 
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Alarms
+					</div>
+			
+					<div class="panel-body">
+			
+						<form class="form-horizontal" role="form">		 	
+			
+			
+			
+			
+			
+						 	
+						</form>
+					</div>
+				</div><!-- Alarms -->							
+							
+							
+							
 		 	</div>
 		</div>
 

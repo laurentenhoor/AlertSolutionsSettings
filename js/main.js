@@ -5,6 +5,7 @@ var cwd = path.dirname( process.execPath );
 
 var fileName = cwd.substr(0,3) + 'settings.ini';
 var config = parseIni(fileName);
+
 console.log(config);
 
 
