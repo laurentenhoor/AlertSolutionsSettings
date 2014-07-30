@@ -49,24 +49,29 @@ li a:hover {
 	left: 0;
 	width: 155px;
 	height: 110px;
-	margin-top: -15px;
+	margin-top: 5px;
 	margin-left: 15px;
 	text-indent: -999em;
 	overflow: hidden;
-	background: url("../img/logo.gif");
+	background: url("../img/logo_new.png");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 
 .active-menu {
-	background-color : #810022;
+	/*background-color : #810022;*/
+	background-color :  #a91e2d;
 	color : white !important;
 }
 .active-menu:hover {
 	
-	background-color: #810022 !important;
+	/*background-color: #810022 !important;*/
+	background-color :  #a91e2d  !important;
 }
 
 .red {
-	color: #810022 !important;
+	/*color: #810022 !important;*/
+	color: #a91e2d !important;
 	font-weight: bold;
 }
