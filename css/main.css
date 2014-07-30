@@ -36,7 +36,7 @@ li a:hover {
 }
 
 #title {
-	margin-left : 200px;
+	margin-left : 220px;
 	margin-top: 12px;
 	font-size: 20px;
 	
@@ -61,17 +61,17 @@ li a:hover {
 
 .active-menu {
 	/*background-color : #810022;*/
-	background-color :  #a91e2d;
+	background-color :  #a01322;
 	color : white !important;
 }
 .active-menu:hover {
 	
 	/*background-color: #810022 !important;*/
-	background-color :  #a91e2d  !important;
+	background-color :  #a01322  !important;
 }
 
 .red {
 	/*color: #810022 !important;*/
-	color: #a91e2d !important;
+	color: #a01322 !important;
 	font-weight: bold;
 }
