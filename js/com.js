@@ -2,9 +2,15 @@ var serialPort = require('serialport');
 var comPort;
 var sp;
 
+var results = [];
+
 serialPort.list(function (err, ports) {
   ports.forEach(function(port) {
-  	if (port.pnpId == "USB\\VID_2047&PID_082F&MI_01\\6&20B65F81&0&0001") {
+  	
+  	console.log(port.comName);
+  	console.log(port.pnpId);
+  	
+  	if (port.pnpId.split('\\')[1] == "VID_2047&PID_082F&MI_01") {
 
   		sp = new serialPort.SerialPort(port.comName, {
 		  baudrate: 9600,
@@ -19,12 +25,16 @@ serialPort.list(function (err, ports) {
 		  console.log('open on port: ' + port.comName);
 		  sp.on('data', function(data) {
 		    console.log('>>> ' +data);
+		    results.push(data);
 		  });
-		  sp.write('status\r');
+		  sp.write('ver?\r');
 		});	
-  	}
+		
+  	};
   });
   if (!sp) {
   	console.log('No device connected!');
-  }
+  };
+
 });
+
