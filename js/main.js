@@ -495,14 +495,14 @@ function setupContentListeners() {
 
 		$('#channel-'+val+'-validlow').val((config['channel_'+val].validlow !== undefined ? config['channel_'+val].validlow : '0.000'));
 		$('#channel-'+val+'-validlow').change(function(evt) {
-			var floatVal = parseFloat($(this).val()).toFixed(3);
+			var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
 			$(this).val(floatVal);
 			config['channel_'+val].validlow = floatVal;
 			writeIni(config, newFileName);
 		});
 		$('#channel-'+val+'-validhigh').val((config['channel_'+val].validhigh !== undefined ? config['channel_'+val].validhigh : '1.000'));
 		$('#channel-'+val+'-validhigh').change(function(evt) {
-			var floatVal = parseFloat($(this).val()).toFixed(3);
+			var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
 			$(this).val(floatVal);
 			config['channel_'+val].validhigh = floatVal;
 			writeIni(config, newFileName);
@@ -514,9 +514,37 @@ function setupContentListeners() {
 			writeIni(config, newFileName);
 		});
 			
+		$('#channel-'+val+'-logging').attr('checked', config['channel_'+val].logging!=0?true:false);
+		$('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
+		$('#channel-'+val+'-logging').change(function(evt) {
+			config['channel_'+val].logging = +$(this).is(':checked');
+			$('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
+			writeIni(config, newFileName);
+		});
 		
-		
+		config['channel_'+val].precisionlog = (config['channel_'+val].precisionlog !== undefined ? config['channel_'+val].precisionlog : 0);
+		$('#channel-'+val+'-precisionlog-slider').slider({
+			min : 0,
+			max : 4,
+			animate : true,
+			step : 1,
+			value : config['channel_'+val].precisionlog,
+			slide : function(event, ui) {
+				$('#channel-'+val+'-precisionlog').val(ui.value);
+			},
+			change : function(event, ui) {
+				$('#channel-'+val+'-precisionlog').val(ui.value);
+				config['channel_'+val].precisionlog = ui.value;
+				writeIni(config, newFileName);
+				$('#channel-'+val+'-validlow').trigger('change');
+				$('#channel-'+val+'-validhigh').trigger('change');
 
+			}
+		});
+		$('#channel-'+val+'-precisionlog-slider').slider('value', config['channel_'+val].precisionlog);
+		$('#channel-'+val+'-precisionlog').change(function() {
+			$('#channel-'+val+'-precisionlog-slider').slider('value', $(this).val());
+		});		
 		
 	});// End of: Each CHANNELS iteration
 	
