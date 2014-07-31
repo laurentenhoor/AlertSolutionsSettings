@@ -42,7 +42,7 @@ serialPort.list(function (err, ports) {
 		    // }
 		    
 		  });
-		  sp.write('ver?\r');
+		  // sp.write('ver?\r');
 		});	
 		
   	};
