@@ -22,9 +22,10 @@ serialPort.list(function (err, ports) {
 		  
 		  stopBits: 1
 		}, false);
-
+		
 		sp.open(function () {
 		  console.log('open on port: ' + port.comName);
+		  alert('Device found on port: ' + port.comName);
 		  sp.on('data', function(data) {
 		    console.log('>>> ' +data);
 		    
@@ -48,6 +49,7 @@ serialPort.list(function (err, ports) {
   });
   if (!sp) {
   	console.log('No device connected!');
+  	alert('No device connected!');
   };
 
 });
