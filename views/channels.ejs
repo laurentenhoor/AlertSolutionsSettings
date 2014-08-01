@@ -356,9 +356,6 @@ pcalc	2nd order polynomial (abc-equation)	 <br>
 						<form class="form-horizontal" role="form">		 	
 			
 			
-			
-			
-			
 						 	
 						</form>
 					</div>
@@ -370,20 +367,15 @@ pcalc	2nd order polynomial (abc-equation)	 <br>
 		</div>
 
 
-<!-- Hide Specific fields -->
-	<%  for(var j=0; j < channels[i].channelType.hideFields.length; j++)   {%>	
-	<script>
+		<!-- Hide Specific fields -->
+		<script>
+			<%  for(var j=0; j < channels[i].channelType.hideFields.length; j++)   {%>
+	
+			$('#channel-<%= channels[i].id %>-<%= channels[i].channelType.hideFields[j] %>-wrap').hide();
+	
+			<% } %>
+		</script>
 		
-
-		$('#channel-<%= channels[i].id %>-<%= channels[i].channelType.hideFields[j] %>-wrap').hide();
-		console.log('#channel-<%= channels[i].id %>-<%= channels[i].channelType.hideFields[j] %>-wrap');
-		console.log('<%= channels[i].id %>')
-		console.log('<%= channels[i].channelType.hideFields[j] %>');
-
-
-
-	</script>
-		<% } %>
 	<% } %>
 </div>
 
