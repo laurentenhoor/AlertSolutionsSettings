@@ -8,7 +8,6 @@ var config = parseIni(fileName);
 
 console.log(config);
 
-
 $(document).ready(function() {
 	
     $('a.menu').click(function(){
@@ -366,7 +365,8 @@ function setupContentListeners() {
 	/// Channels \\\
 	
 	
-	var CHANNELS = [1,2,3,5];
+	var CHANNELS = DEVICES.modemlogger.channels;
+
 	
 	$('#channels-wrap').html(new EJS({
 		url : 'views/channels.ejs'
@@ -374,178 +374,182 @@ function setupContentListeners() {
 		channels : CHANNELS
 	}));
 	
+	console.log(CHANNELS);
+	
 	// Iterate over all channels
 	$.each(CHANNELS, function(key, val) {
 		
-		
-		$('#channel-'+val+'-name').val((config['channel_'+val].name !== undefined ? config['channel_'+val].name : ''));
-		$('#channel-'+val+'-name').change(function(evt) {
-			config['channel_'+val].name = $(this).val();
-			writeIni(config, newFileName);
-		});
-	
-		$('#channel-'+val+'-tagname').val((config['channel_'+val].tagname !== undefined ? config['channel_'+val].tagname : ''));
-		$('#channel-'+val+'-tagname').change(function(evt) {
-			config['channel_'+val].tagname = $(this).val();
-			writeIni(config, newFileName);
-		});
-	
-		$('#channel-'+val+'-enable').attr('checked', config['channel_'+val].enable!=0?true:false);
-		$('#channel-'+val+'-enable-label').text(config['channel_'+val].enable!=0?'Active':'Inactive');
-		$('#channel-'+val+'-enable').change(function(evt) {
-			config['channel_'+val].enable = +$(this).is(':checked');
-			$('#channel-'+val+'-enable-label').text(config['channel_'+val].enable!=0?'Active':'Inactive');
-			writeIni(config, newFileName);
-		});
-
-		$('#channel-'+val+'-inputtype').val(config['channel_'+val].inputtype);
-		$('#channel-'+val+'-inputtype').change(function(evt) {
-			config['channel_'+val].inputtype = $(this).val();
-			writeIni(config, newFileName); 
-		});
-		
-		
-		config['channel_'+val].measuretime = (config['channel_'+val].measuretime !== undefined ? config['channel_'+val].measuretime : 0);
-		$('#channel-'+val+'-measuretime-slider').slider({
-			min : 1,
-			max : 255,
-			animate : true,
-			step : 1,
-			value : config['channel_'+val].measuretime,
-			slide : function(event, ui) {
-				$('#channel-'+val+'-measuretime').val(ui.value);
-			},
-			change : function(event, ui) {
-				$('#channel-'+val+'-measuretime').val(ui.value);
-				config['channel_'+val].measuretime = ui.value;
-				writeIni(config, newFileName);
-			}
-		});
-		$('#channel-'+val+'-measuretime-slider').slider('value', config['channel_'+val].measuretime);
-		$('#channel-'+val+'-measuretime').change(function() {
-			$('#channel-'+val+'-measuretime-slider').slider('value', $(this).val());
-		});
-		
-		
-		
-		config['channel_'+val].measureinterval = (config['channel_'+val].measureinterval !== undefined ? config['channel_'+val].measureinterval : 0);
-		$('#channel-'+val+'-measureinterval-slider').slider({
-			min : 1,
-			max : 255,
-			animate : true,
-			step : 1,
-			value : config['channel_'+val].measureinterval,
-			slide : function(event, ui) {
-				$('#channel-'+val+'-measureinterval').val(ui.value);
-			},
-			change : function(event, ui) {
-				$('#channel-'+val+'-measureinterval').val(ui.value);
-				config['channel_'+val].measureinterval = ui.value;
-				writeIni(config, newFileName);
-			}
-		});
-		$('#channel-'+val+'-measureinterval-slider').slider('value', config['channel_'+val].measureinterval);
-		$('#channel-'+val+'-measureinterval').change(function() {
-			$('#channel-'+val+'-measureinterval-slider').slider('value', $(this).val());
-		});			
-		
-		
-		
-		config['channel_'+val].logtime = (config['channel_'+val].logtime !== undefined ? config['channel_'+val].logtime : 0);
-		$('#channel-'+val+'-logtime-slider').slider({
-			min : 1,
-			max : 255,
-			animate : true,
-			step : 1,
-			value : config['channel_'+val].logtime,
-			slide : function(event, ui) {
-				$('#channel-'+val+'-logtime').val(ui.value);
-			},
-			change : function(event, ui) {
-				$('#channel-'+val+'-logtime').val(ui.value);
-				config['channel_'+val].logtime = ui.value;
-				writeIni(config, newFileName);
-			}
-		});
-		$('#channel-'+val+'-logtime-slider').slider('value', config['channel_'+val].logtime);
-		$('#channel-'+val+'-logtime').change(function() {
-			$('#channel-'+val+'-logtime-slider').slider('value', $(this).val());
-		});			
-		
-
-		config['channel_'+val].debouncetime = (config['channel_'+val].debouncetime !== undefined ? config['channel_'+val].debouncetime : 0);
-		$('#channel-'+val+'-debouncetime-slider').slider({
-			min : 1,
-			max : 255,
-			animate : true,
-			step : 1,
-			value : config['channel_'+val].debouncetime,
-			slide : function(event, ui) {
-				$('#channel-'+val+'-debouncetime').val(ui.value);
-			},
-			change : function(event, ui) {
-				$('#channel-'+val+'-debouncetime').val(ui.value);
-				config['channel_'+val].debouncetime = ui.value;
-				writeIni(config, newFileName);
-			}
-		});
-		$('#channel-'+val+'-debouncetime-slider').slider('value', config['channel_'+val].debouncetime);
-		$('#channel-'+val+'-debouncetime').change(function() {
-			$('#channel-'+val+'-debouncetime-slider').slider('value', $(this).val());
-		});
-
-		$('#channel-'+val+'-validlow').val((config['channel_'+val].validlow !== undefined ? config['channel_'+val].validlow : '0.000'));
-		$('#channel-'+val+'-validlow').change(function(evt) {
-			var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
-			$(this).val(floatVal);
-			config['channel_'+val].validlow = floatVal;
-			writeIni(config, newFileName);
-		});
-		$('#channel-'+val+'-validhigh').val((config['channel_'+val].validhigh !== undefined ? config['channel_'+val].validhigh : '1.000'));
-		$('#channel-'+val+'-validhigh').change(function(evt) {
-			var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
-			$(this).val(floatVal);
-			config['channel_'+val].validhigh = floatVal;
-			writeIni(config, newFileName);
-		});
-		
-		$('#channel-'+val+'-units').val((config['channel_'+val].units !== undefined ? config['channel_'+val].units : ''));
-		$('#channel-'+val+'-units').change(function(evt) {
-			config['channel_'+val].units = $(this).val();
-			writeIni(config, newFileName);
-		});
 			
-		$('#channel-'+val+'-logging').attr('checked', config['channel_'+val].logging!=0?true:false);
-		$('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
-		$('#channel-'+val+'-logging').change(function(evt) {
-			config['channel_'+val].logging = +$(this).is(':checked');
-			$('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
-			writeIni(config, newFileName);
-		});
+		console.log(key, val);
 		
-		config['channel_'+val].precisionlog = (config['channel_'+val].precisionlog !== undefined ? config['channel_'+val].precisionlog : 0);
-		$('#channel-'+val+'-precisionlog-slider').slider({
-			min : 0,
-			max : 4,
-			animate : true,
-			step : 1,
-			value : config['channel_'+val].precisionlog,
-			slide : function(event, ui) {
-				$('#channel-'+val+'-precisionlog').val(ui.value);
-			},
-			change : function(event, ui) {
-				$('#channel-'+val+'-precisionlog').val(ui.value);
-				config['channel_'+val].precisionlog = ui.value;
-				writeIni(config, newFileName);
-				$('#channel-'+val+'-validlow').trigger('change');
-				$('#channel-'+val+'-validhigh').trigger('change');
-
-			}
-		});
-		$('#channel-'+val+'-precisionlog-slider').slider('value', config['channel_'+val].precisionlog);
-		$('#channel-'+val+'-precisionlog').change(function() {
-			$('#channel-'+val+'-precisionlog-slider').slider('value', $(this).val());
-		});		
+		// $('#channel-'+val+'-name').val((config['channel_'+val].name !== undefined ? config['channel_'+val].name : ''));
+		// $('#channel-'+val+'-name').change(function(evt) {
+			// config['channel_'+val].name = $(this).val();
+			// writeIni(config, newFileName);
+		// });
+// 	
+		// $('#channel-'+val+'-tagname').val((config['channel_'+val].tagname !== undefined ? config['channel_'+val].tagname : ''));
+		// $('#channel-'+val+'-tagname').change(function(evt) {
+			// config['channel_'+val].tagname = $(this).val();
+			// writeIni(config, newFileName);
+		// });
+// 	
+		// $('#channel-'+val+'-enable').attr('checked', config['channel_'+val].enable!=0?true:false);
+		// $('#channel-'+val+'-enable-label').text(config['channel_'+val].enable!=0?'Active':'Inactive');
+		// $('#channel-'+val+'-enable').change(function(evt) {
+			// config['channel_'+val].enable = +$(this).is(':checked');
+			// $('#channel-'+val+'-enable-label').text(config['channel_'+val].enable!=0?'Active':'Inactive');
+			// writeIni(config, newFileName);
+		// });
+// 
+		// $('#channel-'+val+'-inputtype').val(config['channel_'+val].inputtype);
+		// $('#channel-'+val+'-inputtype').change(function(evt) {
+			// config['channel_'+val].inputtype = $(this).val();
+			// writeIni(config, newFileName); 
+		// });
+// 		
+// 		
+		// config['channel_'+val].measuretime = (config['channel_'+val].measuretime !== undefined ? config['channel_'+val].measuretime : 0);
+		// $('#channel-'+val+'-measuretime-slider').slider({
+			// min : 1,
+			// max : 255,
+			// animate : true,
+			// step : 1,
+			// value : config['channel_'+val].measuretime,
+			// slide : function(event, ui) {
+				// $('#channel-'+val+'-measuretime').val(ui.value);
+			// },
+			// change : function(event, ui) {
+				// $('#channel-'+val+'-measuretime').val(ui.value);
+				// config['channel_'+val].measuretime = ui.value;
+				// writeIni(config, newFileName);
+			// }
+		// });
+		// $('#channel-'+val+'-measuretime-slider').slider('value', config['channel_'+val].measuretime);
+		// $('#channel-'+val+'-measuretime').change(function() {
+			// $('#channel-'+val+'-measuretime-slider').slider('value', $(this).val());
+		// });
+// 		
+// 		
+// 		
+		// config['channel_'+val].measureinterval = (config['channel_'+val].measureinterval !== undefined ? config['channel_'+val].measureinterval : 0);
+		// $('#channel-'+val+'-measureinterval-slider').slider({
+			// min : 1,
+			// max : 255,
+			// animate : true,
+			// step : 1,
+			// value : config['channel_'+val].measureinterval,
+			// slide : function(event, ui) {
+				// $('#channel-'+val+'-measureinterval').val(ui.value);
+			// },
+			// change : function(event, ui) {
+				// $('#channel-'+val+'-measureinterval').val(ui.value);
+				// config['channel_'+val].measureinterval = ui.value;
+				// writeIni(config, newFileName);
+			// }
+		// });
+		// $('#channel-'+val+'-measureinterval-slider').slider('value', config['channel_'+val].measureinterval);
+		// $('#channel-'+val+'-measureinterval').change(function() {
+			// $('#channel-'+val+'-measureinterval-slider').slider('value', $(this).val());
+		// });			
+// 		
+// 		
+// 		
+		// config['channel_'+val].logtime = (config['channel_'+val].logtime !== undefined ? config['channel_'+val].logtime : 0);
+		// $('#channel-'+val+'-logtime-slider').slider({
+			// min : 1,
+			// max : 255,
+			// animate : true,
+			// step : 1,
+			// value : config['channel_'+val].logtime,
+			// slide : function(event, ui) {
+				// $('#channel-'+val+'-logtime').val(ui.value);
+			// },
+			// change : function(event, ui) {
+				// $('#channel-'+val+'-logtime').val(ui.value);
+				// config['channel_'+val].logtime = ui.value;
+				// writeIni(config, newFileName);
+			// }
+		// });
+		// $('#channel-'+val+'-logtime-slider').slider('value', config['channel_'+val].logtime);
+		// $('#channel-'+val+'-logtime').change(function() {
+			// $('#channel-'+val+'-logtime-slider').slider('value', $(this).val());
+		// });			
+// 		
+// 
+		// config['channel_'+val].debouncetime = (config['channel_'+val].debouncetime !== undefined ? config['channel_'+val].debouncetime : 0);
+		// $('#channel-'+val+'-debouncetime-slider').slider({
+			// min : 1,
+			// max : 255,
+			// animate : true,
+			// step : 1,
+			// value : config['channel_'+val].debouncetime,
+			// slide : function(event, ui) {
+				// $('#channel-'+val+'-debouncetime').val(ui.value);
+			// },
+			// change : function(event, ui) {
+				// $('#channel-'+val+'-debouncetime').val(ui.value);
+				// config['channel_'+val].debouncetime = ui.value;
+				// writeIni(config, newFileName);
+			// }
+		// });
+		// $('#channel-'+val+'-debouncetime-slider').slider('value', config['channel_'+val].debouncetime);
+		// $('#channel-'+val+'-debouncetime').change(function() {
+			// $('#channel-'+val+'-debouncetime-slider').slider('value', $(this).val());
+		// });
+// 
+		// $('#channel-'+val+'-validlow').val((config['channel_'+val].validlow !== undefined ? config['channel_'+val].validlow : '0.000'));
+		// $('#channel-'+val+'-validlow').change(function(evt) {
+			// var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
+			// $(this).val(floatVal);
+			// config['channel_'+val].validlow = floatVal;
+			// writeIni(config, newFileName);
+		// });
+		// $('#channel-'+val+'-validhigh').val((config['channel_'+val].validhigh !== undefined ? config['channel_'+val].validhigh : '1.000'));
+		// $('#channel-'+val+'-validhigh').change(function(evt) {
+			// var floatVal = parseFloat($(this).val()).toFixed(config['channel_'+val].precisionlog);
+			// $(this).val(floatVal);
+			// config['channel_'+val].validhigh = floatVal;
+			// writeIni(config, newFileName);
+		// });
+// 		
+		// $('#channel-'+val+'-units').val((config['channel_'+val].units !== undefined ? config['channel_'+val].units : ''));
+		// $('#channel-'+val+'-units').change(function(evt) {
+			// config['channel_'+val].units = $(this).val();
+			// writeIni(config, newFileName);
+		// });
+// 			
+		// $('#channel-'+val+'-logging').attr('checked', config['channel_'+val].logging!=0?true:false);
+		// $('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
+		// $('#channel-'+val+'-logging').change(function(evt) {
+			// config['channel_'+val].logging = +$(this).is(':checked');
+			// $('#channel-'+val+'-logging-label').text(config['channel_'+val].logging!=0?'Active':'Inactive');
+			// writeIni(config, newFileName);
+		// });
+// 		
+		// config['channel_'+val].precisionlog = (config['channel_'+val].precisionlog !== undefined ? config['channel_'+val].precisionlog : 0);
+		// $('#channel-'+val+'-precisionlog-slider').slider({
+			// min : 0,
+			// max : 4,
+			// animate : true,
+			// step : 1,
+			// value : config['channel_'+val].precisionlog,
+			// slide : function(event, ui) {
+				// $('#channel-'+val+'-precisionlog').val(ui.value);
+			// },
+			// change : function(event, ui) {
+				// $('#channel-'+val+'-precisionlog').val(ui.value);
+				// config['channel_'+val].precisionlog = ui.value;
+				// writeIni(config, newFileName);
+				// $('#channel-'+val+'-validlow').trigger('change');
+				// $('#channel-'+val+'-validhigh').trigger('change');
+// 
+			// }
+		// });
+		// $('#channel-'+val+'-precisionlog-slider').slider('value', config['channel_'+val].precisionlog);
+		// $('#channel-'+val+'-precisionlog').change(function() {
+			// $('#channel-'+val+'-precisionlog-slider').slider('value', $(this).val());
+		// });		
 		
 	});// End of: Each CHANNELS iteration
 	

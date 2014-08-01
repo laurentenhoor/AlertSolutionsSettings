@@ -23,26 +23,26 @@ var BARO_SENSORS = [SENSORS['CUSTOM']];
 var BATT_SENSORS = [SENSORS['CUSTOM']];
 
 
-var CHANNEL_TYPES = {
+var channelTypes = {
 	'voltage' : {
 		name : '0-10 V',
 		default_sensors : VOLT_SENSORS,
-		hide_fields : {}
+		hideFields : ['debouncetime', 'name']
 	},
 	'pulse' : {
 		name : 'Pulse',
 		default_sensors : PULS_SENSORS,
-		hide_fields : {}
+		hideFields : ['measuretime']
 	},
 	'baro' : {
 		name : 'Barometer',
 		default_sensors : BARO_SENSORS,
-		hide_fields : {}
+		hideFields : ['debouncetime']
 	},
 	'batt' : {
 		name : 'Battery',
 		default_sensors : BARO_SENSORS,
-		hide_fields : {}
+		hideFields : ['debouncetime']
 	}
 };
 
@@ -50,16 +50,16 @@ var DEVICES = {
 	'modemlogger' : {
 		channels : [{
 			id : 1,
-			channel_type : CHANNEL_TYPES['voltage']
+			channelType : channelTypes['voltage']
 		}, {
 			id : 2,
-			channel_type : CHANNEL_TYPES['pulse']
+			channelType : channelTypes['pulse']
 		}, {
 			id : 3,
-			channel_type : CHANNEL_TYPES['baro']
+			channelType : channelTypes['baro']
 		}, {
 			id : 5,
-			channel_type : CHANNEL_TYPES['batt']
+			channelType : channelTypes['batt']
 		}]
 	}
 };

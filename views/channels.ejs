@@ -1,15 +1,15 @@
 <!-- Nav tabs -->
 <ul id="channels-tab" class="nav nav-tabs" role="tablist">
 	<% for(var i=0; i < channels.length; i++) {%>
-  		<li class="<%= i == 0 ? 'active' : '' %>"><a href="#channel-<%= channels[i] %>" role="tab" data-toggle="tab">Channel <%= channels[i] %></a></li>
+  		<li class="<%= i == 0 ? 'active' : '' %>"><a href="#channel-<%= channels[i].id %>" role="tab" data-toggle="tab">Channel <%= channels[i].id %></a></li>
 	<% } %>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
 	<% for(var i=0; i < channels.length; i++) {%>	
-		
-		<div class="tab-pane <%= i == 0 ? 'active' : '' %>" id="channel-<%= channels[i] %>"> 	
+				
+		<div class="tab-pane <%= i == 0 ? 'active' : '' %>" id="channel-<%= channels[i].id %>"> 	
 		  
 		 	
 		 	<div class="page-content inset col-md-8">
@@ -26,26 +26,26 @@
 			
 			
 							<div class="form-group">
-								<label for="channel-<%= channels[i] %>-name" class="col-sm-3 control-label">Name</label>
+								<label for="channel-<%= channels[i].id %>-name" class="col-sm-3 control-label">Name</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="channel-<%= channels[i] %>-name" placeholder="Enter Channel Name">
+									<input type="text" class="form-control" id="channel-<%= channels[i].id %>-name" placeholder="Enter Channel Name">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-tagname" class="col-sm-3 control-label">Tag</label>
+								<label for="channel-<%= channels[i].id%>-tagname" class="col-sm-3 control-label">Tag</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="channel-<%= channels[i] %>-tagname" placeholder="Enter Channel Tag">
+									<input type="text" class="form-control" id="channel-<%= channels[i].id %>-tagname" placeholder="Enter Channel Tag">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-enable" class="col-sm-3 control-label">Activity</label>
+								<label for="channel-<%= channels[i].id%>-enable" class="col-sm-3 control-label">Activity</label>
 								<div class="col-sm-7">
 									<div class="checkbox">
 										<label>
-											<input id="channel-<%= channels[i]%>-enable" type="checkbox">
-											<div id="channel-<%= channels[i]%>-enable-label">
+											<input id="channel-<%= channels[i].id%>-enable" type="checkbox">
+											<div id="channel-<%= channels[i].id%>-enable-label">
 												Active
 											</div> </label>
 										<span class="help-block">Enable or disable the channel activity.</span>
@@ -54,52 +54,53 @@
 							</div>	
 							
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-inputtype" class="col-sm-3 control-label">Sensor Type</label>
+								<label for="channel-<%= channels[i].id %>-inputtype" class="col-sm-3 control-label">Sensor Type</label>
 								<div class="col-sm-7">
-									<select class="form-control" id="channel-<%= channels[i]%>-inputtype">
+									<input type="text" class="form-control" id="channel-<%= channels[i].id %>-inputtype" value="<%= channels[i].channelType.name %>" disabled="disabled">
+									<!-- <select class="form-control" id="channel-<%= channels[i].id%>-inputtype">
 										<option value="0">4-20 mA</option>
 										<option value="1">Pulse</option>
 										<option value="2">0-10 V</option>
-									</select>
+									</select> -->
 									<span class="help-block">Select the input type of the sensor.</span>
 								</div>
 							</div>	
+			
 							
-							
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
+							<div id="channel-<%= channels[i].id %>-measuretime-wrap" class="form-group">
+								<label for="channel-<%= channels[i].id %>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-measuretime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+											<input id="channel-<%= channels[i].id%>-measuretime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
 										</div>
-										<div for="channel-<%= channels[i]%>-measuretime" class="col-md-1 control-label">
+										<div for="channel-<%= channels[i].id%>-measuretime" class="col-md-1 control-label">
 											Miliseconds
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-measuretime-slider"></div>
+											<div id="channel-<%= channels[i].id%>-measuretime-slider"></div>
 											<span class="help-block">Voltage excitation time of sensor (in millisec) before recording.</span>
 										</div>
 									</div>
 								</div>
 							</div>
 							
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-debouncetime" class="col-sm-3 control-label">Debounce Time</label>
+							<div id="channel-<%= channels[i].id %>-debouncetime-wrap" class="form-group">
+								<label for="channel-<%= channels[i].id %>-debouncetime" class="col-sm-3 control-label">Debounce Time</label>
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-debouncetime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+											<input id="channel-<%= channels[i].id%>-debouncetime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
 										</div>
-										<div for="channel-<%= channels[i]%>-debouncetime" class="col-md-1 control-label">
+										<div for="channel-<%= channels[i].id%>-debouncetime" class="col-md-1 control-label">
 											Seconds
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-debouncetime-slider"></div>
+											<div id="channel-<%= channels[i].id%>-debouncetime-slider"></div>
 											<span class="help-block">Debounce time for pulse counter in seconds. 
 												Multiple pulses within this time frame counted as one.</span>
 											</span>
@@ -124,12 +125,12 @@
 						<form class="form-horizontal" role="form">	
 
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-logging" class="col-sm-3 control-label">Logging</label>
+								<label for="channel-<%= channels[i].id%>-logging" class="col-sm-3 control-label">Logging</label>
 								<div class="col-sm-7">
 									<div class="checkbox">
 										<label>
-											<input id="channel-<%= channels[i]%>-logging" type="checkbox">
-											<div id="channel-<%= channels[i]%>-logging-label">
+											<input id="channel-<%= channels[i].id%>-logging" type="checkbox">
+											<div id="channel-<%= channels[i].id%>-logging-label">
 												Active
 											</div> </label>
 										<span class="help-block">Enable or disable channel logging.</span>
@@ -138,19 +139,19 @@
 							</div>							
 						
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-precisionlog" class="col-sm-3 control-label">Precision</label>
+								<label for="channel-<%= channels[i].id%>-precisionlog" class="col-sm-3 control-label">Precision</label>
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-precisionlog" type="number" min="0" max="4" step="1" class="form-control" placeholder="0">
+											<input id="channel-<%= channels[i].id%>-precisionlog" type="number" min="0" max="4" step="1" class="form-control" placeholder="0">
 										</div>
-										<div for="channel-<%= channels[i]%>-precisionlog" class="col-md-1 control-label">
+										<div for="channel-<%= channels[i].id%>-precisionlog" class="col-md-1 control-label">
 											Decimals
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-precisionlog-slider"></div>
+											<div id="channel-<%= channels[i].id%>-precisionlog-slider"></div>
 											<span class="help-block">Number of decimal points when storing measurement values.</span>
 										</div>
 									</div>
@@ -160,9 +161,9 @@
 
 						
 							<div class="form-group">
-								<label for="channel-<%= channels[i] %>-units" class="col-sm-3 control-label">Unit Label</label>
+								<label for="channel-<%= channels[i].id %>-units" class="col-sm-3 control-label">Unit Label</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="channel-<%= channels[i] %>-units" placeholder="Enter Unit Label (e.g. mBar)">
+									<input type="text" class="form-control" id="channel-<%= channels[i].id %>-units" placeholder="Enter Unit Label (e.g. mBar)">
 								</div>
 							</div>			
 						
@@ -171,13 +172,13 @@
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-4">
-											<input id="channel-<%= channels[i]%>-validlow" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+											<input id="channel-<%= channels[i].id%>-validlow" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
 										</div>
 										<div class="col-md-1 control-label">
 											to
 										</div>
 										<div class="col-md-4">
-											<input id="channel-<%= channels[i]%>-validhigh" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+											<input id="channel-<%= channels[i].id%>-validhigh" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -208,19 +209,19 @@
 																													
 						
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-measureinterval" class="col-sm-3 control-label">Sampling Interval</label>
+								<label for="channel-<%= channels[i].id%>-measureinterval" class="col-sm-3 control-label">Sampling Interval</label>
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-measureinterval" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+											<input id="channel-<%= channels[i].id%>-measureinterval" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
 										</div>
-										<div for="channel-<%= channels[i]%>-measureinterval" class="col-md-1 control-label">
+										<div for="channel-<%= channels[i].id%>-measureinterval" class="col-md-1 control-label">
 											Seconds
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-measureinterval-slider"></div>
+											<div id="channel-<%= channels[i].id%>-measureinterval-slider"></div>
 											<span class="help-block">Sampling interval in seconds if not in alarm zone.</span>
 										</div>
 									</div>
@@ -228,19 +229,19 @@
 							</div>
 							
 							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-logtime" class="col-sm-3 control-label">Log Interval</label>
+								<label for="channel-<%= channels[i].id%>-logtime" class="col-sm-3 control-label">Log Interval</label>
 								<div class="col-md-9">
 									<div class="form-group row">
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-logtime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+											<input id="channel-<%= channels[i].id%>-logtime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
 										</div>
-										<div for="channel-<%= channels[i]%>-logtime" class="col-md-1 control-label">
+										<div for="channel-<%= channels[i].id%>-logtime" class="col-md-1 control-label">
 											Seconds
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-logtime-slider"></div>
+											<div id="channel-<%= channels[i].id%>-logtime-slider"></div>
 											<span class="help-block">Logging interval in seconds if not in alarm zone.</span>
 										</div>
 									</div>
@@ -287,15 +288,15 @@
 									<div class="form-group row">
 
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-piezocalc-a" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+											<input id="channel-<%= channels[i].id%>-piezocalc-a" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
 										</div>
 			
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-piezocalc-b" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+											<input id="channel-<%= channels[i].id%>-piezocalc-b" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
 										</div>
 
 										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-piezocalc-c" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
+											<input id="channel-<%= channels[i].id%>-piezocalc-c" type="number" min="0" max="999" step="1" class="form-control" placeholder="0,000">
 										</div>
 
 									</div>
@@ -311,9 +312,9 @@
 							
 							
 							<div class="form-group">
-								<label for="channel-<%= channels[i] %>-calc" class="col-sm-3 control-label">Calculation</label>
+								<label for="channel-<%= channels[i].id %>-calc" class="col-sm-3 control-label">Calculation</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="channel-<%= channels[i] %>-calc" placeholder="Enter Calculation String">
+									<input type="text" class="form-control" id="channel-<%= channels[i].id %>-calc" placeholder="Enter Calculation String">
 									<span class="help-block"> 
 										Calculation string performed on sensor value in order of declaration.
 				Operations are declared seprated by comma’s (e.g. *8,-0.1,^1)<br/>
@@ -368,5 +369,28 @@ pcalc	2nd order polynomial (abc-equation)	 <br>
 		 	</div>
 		</div>
 
+
+<!-- Hide Specific fields -->
+	<%  for(var j=0; j < channels[i].channelType.hideFields.length; j++)   {%>	
+	<script>
+		
+
+		$('#channel-<%= channels[i].id %>-<%= channels[i].channelType.hideFields[j] %>-wrap').hide();
+		console.log('#channel-<%= channels[i].id %>-<%= channels[i].channelType.hideFields[j] %>-wrap');
+		console.log('<%= channels[i].id %>')
+		console.log('<%= channels[i].channelType.hideFields[j] %>');
+
+
+
+	</script>
+		<% } %>
 	<% } %>
 </div>
+
+
+
+
+
+
+
+
