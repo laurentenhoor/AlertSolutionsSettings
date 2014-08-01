@@ -66,6 +66,48 @@
 							</div>	
 							
 							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-measuretime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-measuretime" class="col-md-1 control-label">
+											Miliseconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-measuretime-slider"></div>
+											<span class="help-block">Voltage excitation time of sensor (in millisec) before recording.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="channel-<%= channels[i]%>-debouncetime" class="col-sm-3 control-label">Debounce Time</label>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<div class="col-md-3">
+											<input id="channel-<%= channels[i]%>-debouncetime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
+										</div>
+										<div for="channel-<%= channels[i]%>-debouncetime" class="col-md-1 control-label">
+											Seconds
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-9">
+											<div id="channel-<%= channels[i]%>-debouncetime-slider"></div>
+											<span class="help-block">Debounce time for pulse counter in seconds. 
+												Multiple pulses within this time frame counted as one.</span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>								
+							
 							
 						</form>
 					</div>
@@ -163,26 +205,7 @@
 					<div class="panel-body">
 			
 						<form class="form-horizontal" role="form">							
-																						
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-measuretime" class="col-sm-3 control-label">Excitation Time</label>
-								<div class="col-md-9">
-									<div class="form-group row">
-										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-measuretime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
-										</div>
-										<div for="channel-<%= channels[i]%>-measuretime" class="col-md-1 control-label">
-											Miliseconds
-										</div>
-									</div>
-									<div class="form-group row">
-										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-measuretime-slider"></div>
-											<span class="help-block">Voltage excitation time of sensor (in millisec) before recording.</span>
-										</div>
-									</div>
-								</div>
-							</div>
+																													
 						
 							<div class="form-group">
 								<label for="channel-<%= channels[i]%>-measureinterval" class="col-sm-3 control-label">Sampling Interval</label>
@@ -224,27 +247,7 @@
 								</div>
 							</div>
 							
-							<div class="form-group">
-								<label for="channel-<%= channels[i]%>-debouncetime" class="col-sm-3 control-label">Debounce Time</label>
-								<div class="col-md-9">
-									<div class="form-group row">
-										<div class="col-md-3">
-											<input id="channel-<%= channels[i]%>-debouncetime" type="number" min="1" max="255" step="1" class="form-control" placeholder="0">
-										</div>
-										<div for="channel-<%= channels[i]%>-debouncetime" class="col-md-1 control-label">
-											Seconds
-										</div>
-									</div>
-									<div class="form-group row">
-										<div class="col-md-9">
-											<div id="channel-<%= channels[i]%>-debouncetime-slider"></div>
-											<span class="help-block">Debounce time for pulse counter in seconds. 
-												Multiple pulses within this time frame counted as one.</span>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>			
+		
 						
 						</form>
 					</div>
